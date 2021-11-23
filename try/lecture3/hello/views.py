@@ -3,8 +3,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return render(request,"hello/index.html")
-
+    return render(request, "hello/index.html")
 
 def greet(request):
     return HttpResponse("hi, derrick")
@@ -18,5 +17,6 @@ def photos(request):
 # avoiding too many greetings code
 
 def all_greet(request, name):
-    return HttpResponse(f"hello!, {name.capitalize()}")
-    
+    return render (request, "hello/greet.html", {
+        "name": name.capitalize()
+    })    
