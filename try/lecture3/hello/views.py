@@ -3,10 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("hello world")
+    return render(request, "hello/index.html")
 
 def greet(request):
-    return HttpResponse("hi, derrick")
+    return HttpResponse("hello, greet")
 
 def enock(request):
     return HttpResponse("enock is the front engineer in kenya")
@@ -16,5 +16,7 @@ def photos(request):
 
 # avoiding too many greetings code
 
-def all_greet(request):
-    return HttpResponse ("hi")    
+def all_greet(request, name):
+    return render(request, "hello/greet.html", {
+        "name":name.capitalize()
+    })    
